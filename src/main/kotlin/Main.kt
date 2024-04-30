@@ -1,5 +1,11 @@
-package org.example
+package org.analizer
+
+import org.analizer.app.CodeAnalyzer
+import java.io.File
+import java.util.Comparator
 
 fun main() {
-    println("Hello World!")
+    val analyzer = CodeAnalyzer(File("testData"))
+    analyzer.analyzeCode("Simple.kt")
+
 }
