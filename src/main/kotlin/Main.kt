@@ -6,6 +6,6 @@ import java.io.File
 
 internal fun main() {
     val analyzer = CodeAnalyzer(File("testData"))
-    analyzer.analyzeCode("Simple.kt")
+    println(analyzer.analyzeCode("Simple.kt"))
 
 }
