@@ -12,4 +12,15 @@ class Aboba {
             return false
         }
     }
+
+    fun secondFunction(): Int {
+        var y = 10
+        while (y > 0) {
+            if (y == 2) {
+                println("Yes!")
+            }
+            y--
+        }
+        return y;
+    }
 }
