@@ -1,4 +1,3 @@
 package org.analizer.metrics
 
-class CodeStyle : CodeAnalyzeMetric {
-}
+class CodeStyle : CodeAnalyzeMetric

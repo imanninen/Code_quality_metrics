@@ -1,8 +1,6 @@
 package org.analizer.file.load
 
 import java.io.File
-import java.io.InputStream
-import java.io.OutputStream
 
 class Loader(
     private val workingDirectory: File,

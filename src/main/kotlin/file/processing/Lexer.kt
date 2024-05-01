@@ -33,14 +33,13 @@ class Lexer {
     private fun constructBodyStructure(
         fileStream: List<String>,
         index: Int,
-        parseIf: Boolean = false
     ): Pair<List<AbsExpression>, Int> {
         var i = index
         val funcBody = mutableListOf<AbsExpression>()
         val brackets = ArrayDeque<Char>()
         val ifElseStmt = ArrayDeque<String>()
 
-        if (!fileStream[i].contains('{')) {
+        if (! fileStream[i].contains('{')) {
             throw IllegalStateException("'{' was expected at line: ${fileStream[i]}.")
         }
         if (fileStream[i].count { it == '{' } != 1)
@@ -94,16 +93,14 @@ class Lexer {
     }
 
     private fun constructIfStructure(fileStream: List<String>, index: Int): Pair<IfExpression, Int> {
-        var i = index
         val (ifBody, j) = constructBodyStructure(fileStream, index)
-        i = j
+        val i : Int = j
         return Pair(IfExpression(ifBody), i)
     }
 
     private fun constructElseStructure(fileStream: List<String>, index: Int): Pair<ElseExpression, Int> {
-        var i = index
         val (elseBody, j) = constructBodyStructure(fileStream, index)
-        i = j
+        val i : Int = j
         return Pair(ElseExpression(elseBody), i)
     }
 }

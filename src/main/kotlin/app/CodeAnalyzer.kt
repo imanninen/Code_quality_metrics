@@ -14,6 +14,6 @@ class CodeAnalyzer(private val workingDirectory: File) {
 
         val fileStruct = lexer.constructFileStructure(reader.loadFile(file))
         TODO("Not implemented yet")
-        return "aaa"
+        //return "aaa"
     }
 }
