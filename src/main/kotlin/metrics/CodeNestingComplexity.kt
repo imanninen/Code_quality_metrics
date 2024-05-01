@@ -7,7 +7,7 @@ class CodeNestingComplexity : CodeAnalyzeMetric {
         get() = 3
 
     override fun apply(code: FileCodeRepresentation): String {
-        require(code.codeAsExpressions != null) { "CodeComplexity requires code structure!" }
+        require(code.codeAsExpressions != null) { "CodeNestingComplexity requires code structure!" }
         val response = StringBuilder()
         for (function in code.codeAsExpressions.functions) {
             if (function.nestedDepth - 1 >= nestingLimit) {
@@ -15,7 +15,7 @@ class CodeNestingComplexity : CodeAnalyzeMetric {
             }
         }
         if (response.isEmpty()) {
-            response.append("Functions passed Nesting analyze.")
+            response.append("Functions passed Nesting analyze.\n")
         }
         return response.toString()
     }

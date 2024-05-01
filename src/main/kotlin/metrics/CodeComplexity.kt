@@ -3,7 +3,6 @@ package org.analizer.metrics
 import org.analizer.file.code.FileCodeRepresentation
 import org.analizer.utils.AbsExpression
 import org.analizer.utils.ElseExpression
-import org.analizer.utils.IfExpression
 import org.analizer.utils.SimpleExpression
 
 class CodeComplexity : CodeAnalyzeMetric {
