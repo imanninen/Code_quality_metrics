@@ -7,7 +7,7 @@ class CodeStyle : CodeAnalyzeMetric {
         require(code.codeAsExpressions != null) { "CodeStyle requires code structure!" }
         val response = StringBuilder()
         for (function in code.codeAsExpressions.functions) {
-            if (! checkFuncNamesByCamelCase(function.name)) {
+            if (!checkFuncNamesByCamelCase(function.name)) {
                 response.append("${function.name} is not a CamelCase pattern name!")
             }
         }

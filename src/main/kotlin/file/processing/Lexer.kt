@@ -74,7 +74,7 @@ class Lexer {
                     body.add(elseStmt)
                 }
                 // while matching
-                line.contains(Regex("while.*\\(.*\\)")) && !isMatchingDo-> {
+                line.contains(Regex("while.*\\(.*\\)")) && !isMatchingDo -> {
                     var (whileStmt, j) = constructWhileStructure(fileStream, i)
                     i = --j
                     body.add(whileStmt)
