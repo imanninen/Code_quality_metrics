@@ -1,3 +1,9 @@
 package org.analizer.metrics
 
-class CodeStyle : CodeAnalyzeMetric
+import org.analizer.file.code.FileCodeRepresentation
+
+class CodeStyle : CodeAnalyzeMetric {
+    override fun apply(code: FileCodeRepresentation): String {
+        TODO("Not yet implemented")
+    }
+}
