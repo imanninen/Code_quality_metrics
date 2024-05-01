@@ -14,7 +14,7 @@ class CodeAnalyzer(private val workingDirectory: File) {
             ?: error("File not found: $fileName in $workingDirectory.")
 
         val code = FileCodeRepresentationFactory.generateCodeRepresentation(reader, lexer, file)
-
+        println(code)
         TODO("Not implemented yet")
         //return "aaa"
     }

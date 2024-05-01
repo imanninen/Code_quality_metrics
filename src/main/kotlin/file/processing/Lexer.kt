@@ -33,6 +33,7 @@ class Lexer {
     private fun constructBodyStructure(
         fileStream: List<String>,
         index: Int,
+        isMatchingDo: Boolean = false
     ): Pair<List<AbsExpression>, Int> {
         var i = index
         val body = mutableListOf<AbsExpression>()
@@ -73,7 +74,7 @@ class Lexer {
                     body.add(elseStmt)
                 }
                 // while matching
-                line.contains(Regex("while.*\\(.*\\)")) -> {
+                line.contains(Regex("while.*\\(.*\\)")) && !isMatchingDo-> {
                     var (whileStmt, j) = constructWhileStructure(fileStream, i)
                     i = --j
                     body.add(whileStmt)
@@ -83,6 +84,12 @@ class Lexer {
                     var (forStmt, j) = constructForStructure(fileStream, i)
                     i = --j
                     body.add(forStmt)
+                }
+                // do match
+                line.contains(Regex(" do ")) -> {
+                    var (doStmt, j) = constructDoExpression(fileStream, i)
+                    i = --j
+                    body.add(doStmt)
                 }
 
                 line.contains('{') -> brackets.add('{')
@@ -125,5 +132,22 @@ class Lexer {
     private fun constructForStructure(fileStream: List<String>, index: Int): Pair<ForExpression, Int> {
         val (forBody, i) = constructBodyStructure(fileStream, index)
         return Pair(ForExpression(forBody), i)
+    }
+
+    private fun constructDoExpression(fileStream: List<String>, index: Int): Pair<DoWhileExpression, Int> {
+        var (doBody, i) = constructBodyStructure(fileStream, index, true)
+        if (!fileStream[i - 1].contains(Regex("while.*\\(.*\\)")))
+            throw IllegalStateException("while keyword expected at line ${i + 1}: ${fileStream[i]}.")
+        val brackets = ArrayDeque<Char>()
+        while (i < fileStream.size && brackets.isNotEmpty()) {
+            for (symbol in fileStream[i]) {
+                if (symbol == '(')
+                    brackets.push(symbol)
+                if (symbol == ')')
+                    brackets.pop()
+            }
+            i++
+        }
+        return Pair(DoWhileExpression(doBody), i)
     }
 }

@@ -51,7 +51,7 @@ class ForExpression(override val body: List<AbsExpression>) : AbsExpression {
         get() = if (body.isNotEmpty()) max(body.map { it.nestedDepth }) + 1 else 1
 }
 
-class DoExpression(override val body: List<AbsExpression>, val whileExpr: WhileExpression) : AbsExpression {
+class DoWhileExpression(override val body: List<AbsExpression>) : AbsExpression {
     override val nestedDepth: Int
         get() = if (body.isNotEmpty()) max(body.map { it.nestedDepth }) + 1 else 1
 }
