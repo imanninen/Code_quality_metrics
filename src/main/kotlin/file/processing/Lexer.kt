@@ -35,7 +35,7 @@ class Lexer {
         index: Int,
     ): Pair<List<AbsExpression>, Int> {
         var i = index
-        val funcBody = mutableListOf<AbsExpression>()
+        val body = mutableListOf<AbsExpression>()
         val brackets = ArrayDeque<Char>()
         val ifElseStmt = ArrayDeque<String>()
 
@@ -55,41 +55,46 @@ class Lexer {
                 line.contains(Regex("fun [a-z]+.*\\(.*\\)")) -> {
                     var (func, j) = constructFunctionStructure(fileStream, i)
                     i = --j
-                    funcBody.add(func)
+                    body.add(func)
                 }
                 // if matching
                 line.contains(Regex("if.*\\(.*\\)")) -> {
                     var (ifStmt, j) = constructIfStructure(fileStream, i)
                     i = --j
-                    funcBody.add(ifStmt)
+                    body.add(ifStmt)
                     ifElseStmt.push("if")
                 }
                 // else matching
                 line.contains(Regex(".*else.*")) -> {
                     if (ifElseStmt.isEmpty())
-                        return Pair(funcBody, i) // make sure to not add else to if body
+                        return Pair(body, i) // make sure to not add else to if body
                     var (elseStmt, j) = constructElseStructure(fileStream, i)
                     i = --j
-                    funcBody.add(elseStmt)
+                    body.add(elseStmt)
                 }
                 // while matching
                 line.contains(Regex("while.*\\(.*\\)")) -> {
                     var (whileStmt, j) = constructWhileStructure(fileStream, i)
                     i = --j
-                    funcBody.add(whileStmt)
+                    body.add(whileStmt)
                 }
-
+                // for matching
+                line.contains(Regex("for.*\\(.*\\)")) -> {
+                    var (forStmt, j) = constructForStructure(fileStream, i)
+                    i = --j
+                    body.add(forStmt)
+                }
 
                 line.contains('{') -> brackets.add('{')
                 line.contains('}') -> brackets.pop()
 
                 else -> {
-                    funcBody.add(SimpleExpression())
+                    body.add(SimpleExpression())
                 }
             }
             ++i
         }
-        return Pair(funcBody, i)
+        return Pair(body, i)
     }
 
     private fun constructFunctionStructure(fileStream: List<String>, index: Int): Pair<FunctionExpression, Int> {
@@ -115,5 +120,10 @@ class Lexer {
     private fun constructWhileStructure(fileStream: List<String>, index: Int): Pair<WhileExpression, Int> {
         val (whileBody, i) = constructBodyStructure(fileStream, index)
         return Pair(WhileExpression(whileBody), i)
+    }
+
+    private fun constructForStructure(fileStream: List<String>, index: Int): Pair<ForExpression, Int> {
+        val (forBody, i) = constructBodyStructure(fileStream, index)
+        return Pair(ForExpression(forBody), i)
     }
 }
