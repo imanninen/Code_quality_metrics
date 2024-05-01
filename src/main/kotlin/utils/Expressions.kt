@@ -1,4 +1,4 @@
-package org.analizer.utils
+package org.analyzer.utils
 
 import java.util.Collections.max
 

@@ -1,4 +1,4 @@
-package org.analizer.file.load
+package org.analyzer.file.load
 
 import java.io.File
 

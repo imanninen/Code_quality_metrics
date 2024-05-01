@@ -1,9 +1,9 @@
-package org.analizer.metrics
+package org.analyzer.metrics
 
-import org.analizer.file.code.FileCodeRepresentation
-import org.analizer.utils.AbsExpression
-import org.analizer.utils.ElseExpression
-import org.analizer.utils.SimpleExpression
+import org.analyzer.file.code.FileCodeRepresentation
+import org.analyzer.utils.AbsExpression
+import org.analyzer.utils.ElseExpression
+import org.analyzer.utils.SimpleExpression
 
 class CodeComplexity : CodeAnalyzeMetric {
     override fun apply(code: FileCodeRepresentation): String {

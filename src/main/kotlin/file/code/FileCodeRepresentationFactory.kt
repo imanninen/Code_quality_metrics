@@ -1,7 +1,7 @@
-package org.analizer.file.code
+package org.analyzer.file.code
 
-import org.analizer.file.load.Loader
-import org.analizer.file.processing.Lexer
+import org.analyzer.file.load.Loader
+import org.analyzer.file.processing.Lexer
 import java.io.File
 
 class FileCodeRepresentationFactory {

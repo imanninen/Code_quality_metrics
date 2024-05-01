@@ -1,4 +1,4 @@
-package org.analizer.metrics
+package org.analyzer.metrics
 
 enum class AllCodeAnalyzeMetrics(val metric: CodeAnalyzeMetric) {
     CODE_COMPLEXITY(CodeComplexity()),

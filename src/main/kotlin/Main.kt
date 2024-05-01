@@ -1,10 +1,11 @@
-package org.analizer
+@file:JvmName("MainKt")
+package org.analyzer
 
-import org.analizer.app.CodeAnalyzer
+import org.analyzer.app.CodeAnalyzer
 import java.io.File
 
 
-internal fun main(args: Array<String>) {
+fun main(args: Array<String>) {
     if (args.size != 2) {
         println("To run this application pass a path to directory and a file to inspect.")
         println("Example: my/dir/ MyFile.kt")

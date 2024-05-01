@@ -1,6 +1,6 @@
-package org.analizer.file.code
+package org.analyzer.file.code
 
-import org.analizer.utils.FileExpression
+import org.analyzer.utils.FileExpression
 
 class FileCodeRepresentation(
     val codeAsStrings: List<String>? = null,

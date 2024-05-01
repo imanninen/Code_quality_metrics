@@ -1,6 +1,6 @@
-package org.analizer.file.processing
+package org.analyzer.file.processing
 
-import org.analizer.utils.*
+import org.analyzer.utils.*
 import java.util.*
 
 class Lexer {

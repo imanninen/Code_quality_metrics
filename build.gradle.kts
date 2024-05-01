@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "1.9.23"
 }
 
-group = "org.example"
+group = "org.analyzer"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -18,4 +18,11 @@ tasks.test {
 }
 kotlin {
     jvmToolchain(17)
+}
+
+tasks.register<JavaExec>("runExample") {
+    mainClass = "org.analyzer.MainKt"
+    classpath = sourceSets.main.get().runtimeClasspath
+    val programArgs = project.findProperty("args")?.toString()?.split("\\s+".toRegex())
+    args(programArgs ?: listOf<String>())
 }

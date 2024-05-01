@@ -1,6 +1,6 @@
-package org.analizer.metrics
+package org.analyzer.metrics
 
-import org.analizer.file.code.FileCodeRepresentation
+import org.analyzer.file.code.FileCodeRepresentation
 
 interface CodeAnalyzeMetric {
     fun apply(code: FileCodeRepresentation): String

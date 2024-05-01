@@ -1,10 +1,10 @@
-package org.analizer.app
+package org.analyzer.app
 
-import org.analizer.file.code.FileCodeRepresentationFactory
-import org.analizer.file.load.Loader
-import org.analizer.file.processing.Lexer
-import org.analizer.metrics.AllCodeAnalyzeMetrics
-import org.analizer.metrics.CodeAnalyzeMetric
+import org.analyzer.file.code.FileCodeRepresentationFactory
+import org.analyzer.file.load.Loader
+import org.analyzer.file.processing.Lexer
+import org.analyzer.metrics.AllCodeAnalyzeMetrics
+import org.analyzer.metrics.CodeAnalyzeMetric
 import java.io.File
 
 class CodeAnalyzer(private val workingDirectory: File) {
