@@ -1,4 +1,3 @@
-@file:JvmName("MainKt")
 package org.analyzer
 
 import org.analyzer.app.CodeAnalyzer

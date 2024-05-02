@@ -20,7 +20,7 @@ kotlin {
     jvmToolchain(17)
 }
 
-tasks.register<JavaExec>("runExample") {
+tasks.register<JavaExec>("run") {
     mainClass = "org.analyzer.MainKt"
     classpath = sourceSets.main.get().runtimeClasspath
     val programArgs = project.findProperty("args")?.toString()?.split("\\s+".toRegex())
