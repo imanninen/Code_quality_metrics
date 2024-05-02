@@ -52,6 +52,10 @@ class Lexer {
             val line = fileStream[i]
 
             when {
+                line == "" -> {
+                    i++
+                    continue
+                }
                 // function matching
                 line.contains(Regex("fun [a-z]+.*\\(.*\\)")) -> {
                     var (func, j) = constructFunctionStructure(fileStream, i)
@@ -90,6 +94,11 @@ class Lexer {
                     var (doStmt, j) = constructDoExpression(fileStream, i)
                     i = --j
                     body.add(doStmt)
+                }
+                line.contains(Regex(" when ")) -> {
+                    var (whenStmt, j) = constructWhenExpression(fileStream, i)
+                    i = --j
+                    body.add(whenStmt)
                 }
 
                 line.contains('{') -> brackets.add('{')
@@ -149,5 +158,9 @@ class Lexer {
             i++
         }
         return Pair(DoWhileExpression(doBody), i)
+    }
+    private fun constructWhenExpression(fileStream: List<String>, index: Int): Pair<WhenExpression, Int> {
+        val (whenBody, i) = constructBodyStructure(fileStream, index)
+        return Pair(WhenExpression(whenBody), i)
     }
 }

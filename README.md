@@ -4,6 +4,16 @@
 To run my code analyzer, you could pass working directory and kotlin file in it via program arguments.
 
 Example: `./gradlew run -P args="testData Simple.kt"` or set program arguments using IDEA capabilities.
+
+As a result, my application prints in console response from code analyzers:
+```
+secondFunction - 3
+thirdFunction - 3
+firstFunction - 2
+All functions passed CamelCase names test.
+secondFunction has to many nested blocks (3).
+```
+
 ## Solution
 ### General approach
 I decided to parse all code in file into some "tokens". 
@@ -47,6 +57,7 @@ And also, it is necessary for my own metric, which I added to the solution.
 - Code nesting complexity: counting nesting for each condition. 
 If function has more nesting score than `nestingLimit` my program will indicate.
 - Code style: check function's names for camelCase pattern.  
+
 ### Architecture of application
 - In `app` directory there is main UI class [`CodeAnalyzer`](src/main/kotlin/app/CodeAnalyzer.kt).
 - `file.code` directory contains classes:

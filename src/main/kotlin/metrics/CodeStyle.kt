@@ -6,14 +6,16 @@ class CodeStyle : CodeAnalyzeMetric {
     override fun apply(code: FileCodeRepresentation): String {
         require(code.codeAsExpressions != null) { "CodeStyle requires code structure!" }
         val response = StringBuilder()
+        response.append("---------Code style metric----------\n")
         for (function in code.codeAsExpressions.functions) {
             if (!checkFuncNamesByCamelCase(function.name)) {
                 response.append("${function.name} is not a CamelCase pattern name!")
             }
         }
-        if (response.isEmpty()) {
+        if (! response.contains(Regex("is not a CamelCase pattern name!"))) {
             response.append("All functions passed CamelCase names test.\n")
         }
+        response.append("------------------------------------\n")
         return response.toString()
     }
 

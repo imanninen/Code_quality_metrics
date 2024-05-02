@@ -33,12 +33,10 @@ class ElseExpression(override val body: List<AbsExpression>) : AbsExpression {
 }
 
 class WhenExpression(
-    override val body: List<AbsExpression>?,
-    val branches: List<AbsExpression?>,
-    val elseBody: List<AbsExpression>? = null
+    override val body: List<AbsExpression>,
 ) : AbsExpression {
     override val nestedDepth: Int
-        get() = if (! body.isNullOrEmpty()) max(body.map { it.nestedDepth }) + 1 else 1
+        get() = if (body.isNotEmpty()) max(body.map { it.nestedDepth }) + 1 else 1
 }
 
 class WhileExpression(override val body: List<AbsExpression>) : AbsExpression {

@@ -9,9 +9,11 @@ class CodeComplexity : CodeAnalyzeMetric {
     override fun apply(code: FileCodeRepresentation): String {
         require(code.codeAsExpressions != null) { "CodeComplexity requires code structure!" }
         val response = StringBuilder()
+        response.append("-------Code complexity metric-------\n")
         val funcToComplexity = code.codeAsExpressions.functions.associate { it.name to countComplexity(it) }
         val top3complexFunctions = funcToComplexity.toList().sortedByDescending { it.second }.subList(0, 3)
         top3complexFunctions.forEach { response.append("${it.first} - ${it.second}\n") }
+        response.append("------------------------------------\n")
         return response.toString()
     }
 
