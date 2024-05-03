@@ -15,6 +15,7 @@ _**How would you approach the research part?**_
 
 I will explore some complete codebases, and run some metrics on them, for example, code complexity.  
 Then, I'll collect all results and analyze what they have in common and what is different.
+And in common parameters, there has to be that I'm looking for.  
 This approach will help me understand what parameters are really matter to a developer.
 
 _**How do you see implementation of the code metrics mechanism?**_
