@@ -1,5 +1,5 @@
 # Code quality metrics
-
+Here is [link](task1.md) to task 1.
 ## How to run application
 To run my code analyzer, you could pass working directory and kotlin file in it via program arguments.
 
