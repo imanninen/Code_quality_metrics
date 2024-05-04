@@ -39,7 +39,7 @@ class Aboba {
         }
     }
 
-    fun forthfunction1(a: Int) {
+    fun fourthfunction1(a: Int) {
         var x = 10
         when {
             x == 9 -> return
